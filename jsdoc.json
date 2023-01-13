@@ -16,7 +16,8 @@
     "verbose": true,
     "template": "./node_modules/clean-jsdoc-theme",
     "theme_opts": {
-      "title": "@dataparty/tasker - dependency solving task runner",
+      "homepageTitle": "@dataparty/tasker - dependency solving task runner",
+      "title": "@dataparty/tasker",
       "sections": ["Classes", "Global", "Tutorials"],
         "default_theme": "dark",
         "displayModuleHeader": true,
@@ -32,8 +33,18 @@
               "link": "https://www.npmjs.com/package/@dataparty/tasker"
           }
       ],
+      "meta": [
+        {
+            "name": "Author",
+            "content": "dataparty"
+        },
+        {
+            "name": "Description",
+            "content": "dependency solving task runner for javascript"
+        }
+      ],
       "codepen": {
-        "enable_for": ["examples"],
+        "enable_for": ["tutorials"],
         "options": {
           "js_pre_processor": "babel"
         }
