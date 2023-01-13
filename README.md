@@ -19,7 +19,7 @@ Tasks are added to the [`Runner`](https://datapartyjs.github.io/tasker/Runner.ht
  2. Task with no dependencies
  3. Task with depenedencies, in order after solving usage graph
 
-As tasks are completed they can resolve with a result (or not). Any task that has defined dependencies will receive the results from the tasks they depend upon in their [`Task.exec(task)`](https://datapartyjs.github.io/tasker/Task.html#exec)
+As tasks are completed they can resolve with a result (or not). Any task that has defined dependencies will receive the results from the tasks they depend upon in their [`Task.exec({task, depends})`](https://datapartyjs.github.io/tasker/Task.html#exec)
 
 ![](./images/tasker-overview.svg)
 
@@ -99,7 +99,7 @@ Background tasks do not count against the parallel task limit. On failure backgr
 ### How to implement a background task
 
  * You must set the constructor property [`Task.background`](https://datapartyjs.github.io/tasker/Task.html#constructor) to true during task construction.
- * You must implement a [`Task.exec()`](https://datapartyjs.github.io/tasker/Task.html#exec) function which returns [`Task.detach()`](https://datapartyjs.github.io/tasker/Task.html#detach)
+ * You must implement a [`Task.exec({task, depends})`](https://datapartyjs.github.io/tasker/Task.html#exec) function which returns [`Task.detach()`](https://datapartyjs.github.io/tasker/Task.html#detach)
  * You must implement a [`Task.stop()`](https://datapartyjs.github.io/tasker/Task.html#stop) function which stops your tasks.
  * Call [`Task.backgroundResolve(value)`](https://datapartyjs.github.io/tasker/Task.html#backgroundResolve) when stopping successfully or due to a call to `Task.stop()`.
  * Call [`Task.backgroundReject(value)`](https://datapartyjs.github.io/tasker/Task.html#backgroundReject) when stopping due to failure.

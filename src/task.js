@@ -212,7 +212,7 @@ class Task extends EventEmitter {
   /**
    * All tasks must either implement this function or provide a `exec` function at construction time. Foreground tasks are expected to do their work and return any data as quickly as possible. Returned data is made available to any tasks that named this task as a depedency. Background tasks are expected to return `this.detach()` and manage their state with the `this.backgroundResolve` and `this.backgroundReject` functions.
    * @type {TaskExec}
-   * @param {Task} options.task
+   * @param {Task} options.task The task that is running
    * @param {Collection} options.depends - Collection of task results from dependencies
    * @returns {*} Return any data you want dependant tasks to recieve in their `options.depend`
    */
