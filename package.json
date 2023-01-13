@@ -1,5 +1,6 @@
 {
   "name": "@dataparty/tasker",
+  "private": false,
   "version": "0.0.1",
   "description": "dependency solving task runner",
   "main": "index.js",
