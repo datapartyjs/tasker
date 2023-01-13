@@ -5,6 +5,12 @@
   "description": "dependency solving task runner",
   "main": "index.js",
   "files": ["src/", "index.js"],
+  "keywords": [
+    "task",
+    "runner",
+    "dependency",
+    "background"
+  ],
   "scripts": {
     "build-docs": "./scripts/build-docs.sh",
     "generate-docs": "jsdoc --configure jsdoc.json --verbose"
