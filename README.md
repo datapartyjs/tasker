@@ -15,7 +15,7 @@ For more details see documentation:
 
 * [`class Runner`](https://datapartyjs.github.io/tasker/Runner.html)
 
-* [`class Task`]((https://datapartyjs.github.io/tasker/Task.html))
+* [`class Task`](https://datapartyjs.github.io/tasker/Task.html)
 
 
 
