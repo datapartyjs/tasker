@@ -10,7 +10,7 @@
   },
   "homepage": "https://datapartyjs.github.io/tasker/",
   "repository": "https://github.com/datapartyjs/tasker",
-  "author": "Dataparty",
+  "author": "Dataparty<code@dataparty.xyz>",
   "license": "Apache-2.0",
   "dependencies": {
     "debug": "^3.1.0",
