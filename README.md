@@ -3,6 +3,12 @@
 
 Tasker is a parallel task runner with dependency resolution and results collection.
 
+ * Documentation - [datapartyjs.github.io/tasker/](https://datapartyjs.github.io/tasker/)
+ * NPM - [npmjs.com/package/@dataparty/tasker](https://www.npmjs.com/package/@dataparty/tasker)
+ * Code - [github.com/datapartyjs/tasker](https://github.com/datapartyjs/tasker)
+ * Social - [@dataparty](https://partyon.xyz/@dataparty)
+ * Support - [liberpay/dataparty](https://liberapay.com/dataparty)
+
 # Design
 
 Tasker provides a [`Runner`](https://datapartyjs.github.io/tasker/Runner.html) class which manages depedencies, tasks and results. The runner class utilizes the [dependency-solver](https://www.npmjs.com/package/dependency-solver) npm package. When possible upto [`Runner.parallel`](https://datapartyjs.github.io/tasker/Runner.html#Runner) foreground tasks will be run at the same time. When background tasks are added to the `Runner` they are started immeditaly and do not count against the parallel limit. 
