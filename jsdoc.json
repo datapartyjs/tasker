@@ -1,0 +1,41 @@
+{
+  "source": {
+      "include": ["src", "package.json", "README.md"],
+      "includePattern": ".(js)$",
+      "excludePattern": "(node_modules/|docs)"
+  },
+
+  "plugins": ["plugins/markdown"],
+
+  "opts": {
+    "encoding": "utf8",
+    "readme": "./README.md",
+    "tutorials": "tutorials",
+    "destination": "docs/",
+    "recurse": true,
+    "verbose": true,
+    "template": "./node_modules/clean-jsdoc-theme",
+    "theme_opts": {
+        "default_theme": "dark",
+        "displayModuleHeader": true,
+        "menu": [
+          {
+              "title": "Github",
+              "id": "github",
+              "link": "https://github.com/datapartyjs/tasker"
+          },
+          {
+              "title": "npm",
+              "id": "npm",
+              "link": "https://www.npmjs.com/package/@dataparty/tasker"
+          }
+      ]
+    }
+  },
+
+  
+  "markdown": {
+      "hardwrap": false,
+      "idInHeadings": true
+  }
+}

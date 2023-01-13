@@ -1,0 +1,21 @@
+{
+  "name": "@dataparty/tasker",
+  "version": "0.0.1",
+  "description": "dependency solving task runner",
+  "main": "index.js",
+  "scripts": {
+    "generate-docs": "jsdoc --configure jsdoc.json --verbose"
+  },
+  "repository": "https://github.com/datapartyjs/tasker",
+  "author": "Dataparty",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "debug": "^3.1.0",
+    "dependency-solver": "^1.0.6",
+    "eventemitter3": "^4.0.7",
+    "jsonpath-plus": "^0.20.1"
+  },
+  "devDependencies": {
+    "clean-jsdoc-theme": "^4.2.2"
+  }
+}
