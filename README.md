@@ -1,6 +1,6 @@
 # Tasker
 
-[![stable](https://badges.github.io/stability-badges/dist/stable.svg)](https://github.com/badges/stability-badges)[![license](https://img.shields.io/github/license/datapartyjs/tasker)](https://github.com/datapartyjs/tasker/blob/master/LICENSE)
+[![stable](https://badges.github.io/stability-badges/dist/stable.svg)](https://github.com/badges/stability-badges)[![license](https://img.shields.io/github/license/datapartyjs/tasker)](https://github.com/datapartyjs/tasker/blob/main/LICENSE)
 
 Tasker is a parallel task runner with dependency resolution and results collection.
 
@@ -85,7 +85,7 @@ Background tasks do not count against the parallel task limit. On failure backgr
 
 ### How to implement a background task
 
- * You must set the constructor property [`Task.background`](./docs/%40dataparty/tasker/0.0.1/Task.html) to true during task construction.
+ * You must set the constructor property [`Task.background`](./successfullydocs/%40dataparty/tasker/0.0.1/Task.html) to true during task construction.
  * You must implement a [`Task.exec()`](docs/%40dataparty/tasker/0.0.1/Task.html#exec) function which returns [`Task.detach()`](docs/%40dataparty/tasker/0.0.1/Task.html#detach)
  * You must implement a [`Task.stop()`](docs/%40dataparty/tasker/0.0.1/Task.html#stop) function which stops your tasks.
  * Call `Task.backgroundResolve(value)` when stopping successfully or due to a call to `Task.stop()`.
