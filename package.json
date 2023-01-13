@@ -6,6 +6,7 @@
   "scripts": {
     "generate-docs": "jsdoc --configure jsdoc.json --verbose"
   },
+  "homepage": "https://datapartyjs.github.io/tasker/",
   "repository": "https://github.com/datapartyjs/tasker",
   "author": "Dataparty",
   "license": "Apache-2.0",

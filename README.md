@@ -1,28 +1,27 @@
 # Tasker
-
 [![stable](https://badges.github.io/stability-badges/dist/stable.svg)](https://github.com/badges/stability-badges)[![license](https://img.shields.io/github/license/datapartyjs/tasker)](https://github.com/datapartyjs/tasker/blob/main/LICENSE)
 
 Tasker is a parallel task runner with dependency resolution and results collection.
 
 # Design
 
-Tasker provides a [`Runner`](./docs/%40dataparty/tasker/0.0.1/Runner.html) class which manages depedencies, tasks and results. The runner class utilizes the [dependency-solver](https://www.npmjs.com/package/dependency-solver) npm package. When possible upto [`Runner.parallel`](docs/%40dataparty/tasker/0.0.1/Runner.html#Runner) foreground tasks will be run at the same time. When background tasks are added to the `Runner` they are started immeditaly and do not count against the parallel limit. 
+Tasker provides a [`Runner`](https://datapartyjs.github.io/tasker/Runner.html) class which manages depedencies, tasks and results. The runner class utilizes the [dependency-solver](https://www.npmjs.com/package/dependency-solver) npm package. When possible upto [`Runner.parallel`](https://datapartyjs.github.io/tasker/Runner.html#Runner) foreground tasks will be run at the same time. When background tasks are added to the `Runner` they are started immeditaly and do not count against the parallel limit. 
 
 ![](./images/tasker-overview.svg)
 
-Consumers of the library are expected to extend the [`Task`](./docs/%40dataparty/tasker/0.0.1/Task.html) class to later instantiate and add instances to a runner. Tasks are added by calling [`Runner.addTask(myTaskInstance)`](./docs/%40dataparty/tasker/0.0.1/Runner.html#addTask).
+Consumers of the library are expected to extend the [`Task`](https://datapartyjs.github.io/tasker/Task.html) class to later instantiate and add instances to a runner. Tasks are added by calling [`Runner.addTask(myTaskInstance)`](https://datapartyjs.github.io/tasker/Runner.html#addTask).
 
 For more details see documentation:
 
-* [`class Runner`](./docs/%40dataparty/tasker/0.0.1/Runner.html)
+* [`class Runner`](https://datapartyjs.github.io/tasker/Runner.html)
 
-* [`class Task`]((./docs/%40dataparty/tasker/0.0.1/Task.html))
+* [`class Task`]((https://datapartyjs.github.io/tasker/Task.html))
 
 
 
 ## Foreground Tasks
 
-By default tasks are in the foreground. Tasks can be defined either with a function or by subclassing. See a [complete tutorial](./tutorial-foreground%20tasks.html).
+By default tasks are in the foreground. Tasks can be defined either with a function or by subclassing. See a [complete tutorial](https://datapartyjs.github.io/tasker/tutorial-foreground%20tasks.html).
 
 ### Define task using function
 
@@ -85,8 +84,8 @@ Background tasks do not count against the parallel task limit. On failure backgr
 
 ### How to implement a background task
 
- * You must set the constructor property [`Task.background`](./successfullydocs/%40dataparty/tasker/0.0.1/Task.html) to true during task construction.
- * You must implement a [`Task.exec()`](docs/%40dataparty/tasker/0.0.1/Task.html#exec) function which returns [`Task.detach()`](docs/%40dataparty/tasker/0.0.1/Task.html#detach)
- * You must implement a [`Task.stop()`](docs/%40dataparty/tasker/0.0.1/Task.html#stop) function which stops your tasks.
- * Call `Task.backgroundResolve(value)` when stopping successfully or due to a call to `Task.stop()`.
- * Call `Task.backgroundReject(value)` when stopping due to failure.
+ * You must set the constructor property [`Task.background`](https://datapartyjs.github.io/tasker/Task.html#constructor) to true during task construction.
+ * You must implement a [`Task.exec()`](https://datapartyjs.github.io/tasker/Task.html#exec) function which returns [`Task.detach()`](https://datapartyjs.github.io/tasker/Task.html#detach)
+ * You must implement a [`Task.stop()`](https://datapartyjs.github.io/tasker/Task.html#stop) function which stops your tasks.
+ * Call [`Task.backgroundResolve(value)`](https://datapartyjs.github.io/tasker/Task.html#backgroundResolve) when stopping successfully or due to a call to `Task.stop()`.
+ * Call [`Task.backgroundReject(value)`](https://datapartyjs.github.io/tasker/Task.html#backgroundReject) when stopping due to failure.
