@@ -49,7 +49,7 @@
           "js_pre_processor": "babel"
         }
       },
-      "footer": "<div style='margin-bottom: 0.5rem;'>@dataparty/tasker</div> Fork: <a href='https://datapartyjs.github.io/tasker/'>https://datapartyjs.github.io/tasker/</a>"
+      "footer": "<div style='margin-bottom: 0.5rem;'>@dataparty/tasker</div> Fork: <a href='https://datapartyjs.github.io/tasker/'>https://datapartyjs.github.io/tasker/</a><br>Built by <a href='https://www.dataparty.xyz'>dataparty</a> with 🖤✊🏿"
     }
   },
 
