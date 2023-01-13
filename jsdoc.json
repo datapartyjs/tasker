@@ -16,7 +16,7 @@
     "verbose": true,
     "template": "./node_modules/clean-jsdoc-theme",
     "theme_opts": {
-      "homepageTitle": "@dataparty/tasker - dependency solving task runner",
+      "homepageTitle": "tasker - dependency solving task runner",
       "title": "@dataparty/tasker",
       "sections": ["Classes", "Global", "Tutorials"],
         "default_theme": "dark",
@@ -48,7 +48,8 @@
         "options": {
           "js_pre_processor": "babel"
         }
-      }
+      },
+      "footer": "<div style='margin-bottom: 0.5rem;'>@dataparty/tasker</div> Fork: <a href='https://datapartyjs.github.io/tasker/'>https://datapartyjs.github.io/tasker/</a>"
     }
   },
 
