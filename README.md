@@ -11,11 +11,19 @@ Tasker is a parallel task runner with dependency resolution and results collecti
 
 # Design
 
-Tasker provides a [`Runner`](https://datapartyjs.github.io/tasker/Runner.html) class which manages depedencies, tasks and results. The runner class utilizes the [dependency-solver](https://www.npmjs.com/package/dependency-solver) npm package. When possible upto [`Runner.parallel`](https://datapartyjs.github.io/tasker/Runner.html#Runner) foreground tasks will be run at the same time. When background tasks are added to the `Runner` they are started immeditaly and do not count against the parallel limit. 
+Tasker provides a [`Runner`](https://datapartyjs.github.io/tasker/Runner.html) class which manages depedencies, tasks and results. The runner class utilizes the [dependency-solver](https://www.npmjs.com/package/dependency-solver) npm package. When possible upto [`Runner.parallel`](https://datapartyjs.github.io/tasker/Runner.html#Runner) foreground tasks will be run at the same time. When background tasks are added to the `Runner` they are started immeditaly and do not count against the parallel limit.
+
+Tasks are added to the [`Runner`](https://datapartyjs.github.io/tasker/Runner.html) by calling [`Runner.addTask(task)`](https://datapartyjs.github.io/tasker/Runner.html#addTask). Every [`Runner.planningIntervalMs`](https://datapartyjs.github.io/tasker/Runner.html) added tasks have their dependencies reveiwed and the schedule is updated. Tasks are scheduled in order of:
+
+ 1. Order of calls to [`Runner.addTask(task)`](https://datapartyjs.github.io/tasker/Runner.html#addTask)
+ 2. Task with no dependencies
+ 3. Task with depenedencies, in order after solving usage graph
+
+As tasks are completed they can resolve with a result (or not). Any task that has defined dependencies will receive the results from the tasks they depend upon in their [`Task.exec(task)`](https://datapartyjs.github.io/tasker/Task.html#exec)
 
 ![](./images/tasker-overview.svg)
 
-Consumers of the library are expected to extend the [`Task`](https://datapartyjs.github.io/tasker/Task.html) class to later instantiate and add instances to a runner. Tasks are added by calling [`Runner.addTask(myTaskInstance)`](https://datapartyjs.github.io/tasker/Runner.html#addTask).
+Consumers of the library are expected to extend the [`Task`](https://datapartyjs.github.io/tasker/Task.html) class to later instantiate and add instances to a runner. Tasks are added by calling [`Runner.addTask(task)`](https://datapartyjs.github.io/tasker/Runner.html#addTask).
 
 For more details see documentation:
 

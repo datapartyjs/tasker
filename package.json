@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "dependency solving task runner",
   "main": "index.js",
+  "files": ["src/", "index.js"],
   "scripts": {
     "build-docs": "./scripts/build-docs.sh",
     "generate-docs": "jsdoc --configure jsdoc.json --verbose"
