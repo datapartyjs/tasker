@@ -3,7 +3,7 @@
 
 Tasker is a parallel task runner with dependency resolution and results collection.
 
- * Documentation - [datapartyjs.github.io/tasker/](https://datapartyjs.github.io/tasker/)
+ * Documentation - [datapartyjs.github.io/tasker/](https://datapartyjs.github.io/tasker)
  * NPM - [npmjs.com/package/@dataparty/tasker](https://www.npmjs.com/package/@dataparty/tasker)
  * Code - [github.com/datapartyjs/tasker](https://github.com/datapartyjs/tasker)
  * Social - [@dataparty](https://partyon.xyz/@dataparty)
@@ -19,7 +19,7 @@ Tasks are added to the [`Runner`](https://datapartyjs.github.io/tasker/Runner.ht
  2. Task with no dependencies
  3. Task with depenedencies, in order after solving usage graph
 
-As tasks are completed they can resolve with a result (or not). Any task that has defined dependencies will receive the results from the tasks they depend upon in their [`Task.exec({task, depends})`](https://datapartyjs.github.io/tasker/Task.html#exec)
+As tasks are completed they can resolve with a result (or not). Any task that has defined dependencies will receive a reference to the task they depend upon in the `depends` argument passed to [`Task.exec({task, depends})`](https://datapartyjs.github.io/tasker/Task.html#exec)
 
 ![](./images/tasker-overview.svg)
 

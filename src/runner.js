@@ -5,7 +5,7 @@ const {JSONPath} = require('jsonpath-plus')
 const EventEmitter = require('eventemitter3')
 
 /**
- * Class representing a task runner
+ * Class representing a task runner.
  */
 class Runner extends EventEmitter {
 
@@ -450,11 +450,14 @@ class Runner extends EventEmitter {
     return true
   }
 
+/**
+ * @typedef {'holding' |'pending' |'running' | 'background' | 'success' |'failure'} TaskState
+ */
 
   /**
-   * Lookup task state
+   * Lookup task state.
    * @param {string} name Task name 
-   * @returns string
+   * @returns {TaskState} 
    */
   taskState(name){
     let queueNames = ['holding','pending','running', 'background', 'success','failure']
