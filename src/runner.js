@@ -5,7 +5,7 @@ const {JSONPath} = require('jsonpath-plus')
 const EventEmitter = require('eventemitter3')
 
 /**
- * Class representing a task runner.
+ * Class representing a task runner
  */
 class Runner extends EventEmitter {
 
@@ -200,6 +200,7 @@ class Runner extends EventEmitter {
 
       if(this._noWorkCount >= 2){
         clearTimeout(this._runWatchdog)
+        this._runWatchdog = undefined
         this.runningCount = undefined
 
         /**
@@ -359,6 +360,8 @@ class Runner extends EventEmitter {
     debug('restarting task - ', taskName, 'in', timeout||this._restartDelay, 'ms')
       setTimeout(async ()=>{
         let task = this.getTask(taskName)
+
+        debug('restarting', task)
         
         if(!task){return}
         await task.reset()
@@ -450,14 +453,11 @@ class Runner extends EventEmitter {
     return true
   }
 
-/**
- * @typedef {'holding' |'pending' |'running' | 'background' | 'success' |'failure'} TaskState
- */
 
   /**
-   * Lookup task state.
+   * Lookup task state
    * @param {string} name Task name 
-   * @returns {TaskState} 
+   * @returns string
    */
   taskState(name){
     let queueNames = ['holding','pending','running', 'background', 'success','failure']
