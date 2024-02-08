@@ -201,6 +201,7 @@ class Runner extends EventEmitter {
       if(this._noWorkCount >= 2){
         clearTimeout(this._runWatchdog)
         this.runningCount = undefined
+        this._runWatchdog = undefined
 
         /**
          * Idle event.
@@ -359,6 +360,8 @@ class Runner extends EventEmitter {
     debug('restarting task - ', taskName, 'in', timeout||this._restartDelay, 'ms')
       setTimeout(async ()=>{
         let task = this.getTask(taskName)
+
+        debug('restarting', task)
         
         if(!task){return}
         await task.reset()
