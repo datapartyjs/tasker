@@ -119,7 +119,13 @@ class Task extends EventEmitter {
       await this.assertNotCancelled()
 
       let func = (!this._exec) ? this.exec.bind(this) : this._exec
-      this.success = await func({task:this, depends: dependResults})
+      let result = func({task:this, depends: dependResults})
+
+      if(this.background){
+        await result
+      } else {
+        this.success = await result
+      }
     }
     catch(err){
       debug('done - ',this.name,' - failure')
