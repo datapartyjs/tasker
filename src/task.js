@@ -1,8 +1,6 @@
 const EventEmitter = require('eventemitter3')
 debug = require('debug')('Tasker.Task')
 
-
-
 /**
  * @typedef Task.Properties
  * @property {string} name Task name
@@ -13,7 +11,7 @@ debug = require('debug')('Tasker.Task')
  * @property {Number} finished Unix time ms the task completed running exec function
  * @property {bool} done Task has completed?
  * @property {*} success Task success value if one was returned by exec
- * @property {*} failure Task failure `Error` object.
+ * @property {*} failure Task failure value if one was returned by exec
  */
 
 
@@ -26,20 +24,12 @@ debug = require('debug')('Tasker.Task')
 
 class Task extends EventEmitter {
 
-    /**
-   * Exec function. Background tasks must return `Task.detach()` and manage the task result with the `Task.backgroundResolve()` and `Task.backgroundReject()` functions.
-   * @callback TaskExec
-   * @param {Task} options.task - The currently running Task.
-   * @param {Collection<string,Task>} options.depends - Collection of tasks that this task depends upon.
-   * @returns {Promise<any>}
-   */
-
   /**
    * Create a task
    * @param {string} options.name Task name
-   * @param {string[]} options.depends List of tasks this task depends on
-   * @param {TaskExec} options.exec Function to run. You must either implement `Task.exec` or provide a function here.
-   * @param {*} options.context Context data for this task (optional)
+   * @param {} options.depends List of tasks this task depends on
+   * @param {} options.exec Function to run. You must either implement `Task.exec` or provide a function here.
+   * @param {any} options.context Context data for this task (optional)
    * @param {bool} options.background
    */
   constructor({name, depends, exec, context, background}){
@@ -119,7 +109,14 @@ class Task extends EventEmitter {
       await this.assertNotCancelled()
 
       let func = (!this._exec) ? this.exec.bind(this) : this._exec
-      this.success = await func({task:this, depends: dependResults})
+
+      let result = func({task:this, depends: dependResults})
+
+      if(this.background){
+        await result
+      } else {
+        this.success = await result
+      }
     }
     catch(err){
       debug('done - ',this.name,' - failure')
@@ -211,14 +208,20 @@ class Task extends EventEmitter {
    */
   backgroundReject(value){ this._rejectBackground(value) }
 
-
+  /**
+   * Exec function. Background tasks must return `Task.detach()` and manage the task result with the `Task.backgroundResolve()` and `Task.backgroundReject()` functions.
+   * @callback TaskExec
+   * @param {Task} options.task
+   * @param {Collection} options.depends - Collection of task results from dependencies
+   * @returns {Promise<any>}
+   */
 
   /**
-   * All tasks must either implement this function or provide a `exec` function at construction time. Foreground tasks are expected to do their work and return any data as quickly as possible. Returned data is made available to any tasks that named this task as a depedency. Background tasks are expected to return `this.detach()` and manage their state with the `this.backgroundResolve` and `this.backgroundReject` functions. If an unexpected exception occurs it will be recorded in `Task.failure`.
+   * All tasks must either implement this function or provide a `exec` function at construction time. Foreground tasks are expected to do their work and return any data as quickly as possible. Returned data is made available to any tasks that named this task as a depedency. Background tasks are expected to return `this.detach()` and manage their state with the `this.backgroundResolve` and `this.backgroundReject` functions.
    * @type {TaskExec}
    * @param {Task} options.task The task that is running
-   * @param {Collection<string,Task>} options.depends - Collection of completed depended tasks (mapped by name).
-   * @returns {*} Return any data you want dependant tasks to recieve in their `options.depend`. Return value will be stored in `Task.success`. If an unexpected exception occurs it will be recorded in `Task.failure`.
+   * @param {Collection} options.depends - Collection of task results from dependencies
+   * @returns {*} Return any data you want dependant tasks to recieve in their `options.depend`
    */
   async exec({task, depends}){
     throw new Error('exec - must override or pass exec function at construction time')
@@ -231,7 +234,7 @@ class Task extends EventEmitter {
    */
 
   /**
-   * All background tasks must implement this function. Do not call this function directly, use `Task.cancel()`. Background tasks must manage the task result with the `Task.backgroundResolve()` and `Task.backgroundReject()` functions.
+   * All background tasks must implement this function. Background tasks must manage the task result with the `Task.backgroundResolve()` and `Task.backgroundReject()` functions.
    * @type {TaskStop}
    */
   async stop(){
