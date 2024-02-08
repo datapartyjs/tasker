@@ -7,7 +7,7 @@ Tasker is a parallel task runner with dependency resolution and results collecti
  * NPM - [npmjs.com/package/@dataparty/tasker](https://www.npmjs.com/package/@dataparty/tasker)
  * Code - [github.com/datapartyjs/tasker](https://github.com/datapartyjs/tasker)
  * Social - [@dataparty](https://partyon.xyz/@dataparty)
- * Support - [liberpay/dataparty](https://liberapay.com/dataparty)
+ * Support - [ko-fi/dataparty](https://ko-fi.com/dataparty)
 
 # Design
 
